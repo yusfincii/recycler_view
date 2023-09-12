@@ -38,17 +38,20 @@ class Adapter(private var context:Context, private var dataSet:List<Country>)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+        // current country
         val country = dataSet[position]
 
+        // when pressed to line
         holder.cardDesign.setOnClickListener{
             Toast.makeText(context, country.name.uppercase(), Toast.LENGTH_SHORT).show()
         }
 
+        // text edit
         holder.text.text = country.name.replaceFirst(country.name.first(), country.name.first().uppercaseChar())
 
         holder.more.setOnClickListener {
-
-           val popUp = PopupMenu(context, holder.more)
+            // popUp menu
+            val popUp = PopupMenu(context, holder.more)
             popUp.menuInflater.inflate(R.menu.menu_design, popUp.menu)
 
             popUp.show()
